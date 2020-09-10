@@ -98,3 +98,8 @@ img {
 #about p {
 	font-size: 2em;
 }
+
+#heading {
+	background-color: #162541;
+	padding: 0.2em;
+}
