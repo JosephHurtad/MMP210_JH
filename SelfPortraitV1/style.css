@@ -34,7 +34,7 @@ img {
 
 /* id and class selector */
 
-#container {
+#container, main {
 	max-width: 960px;
 	min-width: 320px;
 	margin: 0 auto;
