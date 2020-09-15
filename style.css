@@ -32,6 +32,11 @@ img {
 	border-width: 4px;
 }
 
+audio {
+	width: 100%;
+	color: darkblue;
+}
+
 /* id and class selector */
 
 #container {
