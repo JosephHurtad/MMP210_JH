@@ -40,10 +40,10 @@ function draw() {
 	arc(290, 121, 85, 160, PI, PI + HALF_PI);
 	arc(285, 127, 90, 170, PI, PI + HALF_PI);
 	arc(280, 133, 95, 180, PI, PI + HALF_PI);
-	arc(285, 139, 100, 190, PI, PI + HALF_PI);
-	arc(280, 145, 105, 200, PI, PI + HALF_PI);
-	arc(275, 151, 110, 210, PI, PI + HALF_PI);
-	arc(270, 157, 115, 220, PI, PI + HALF_PI);
+	arc(275, 139, 100, 190, PI, PI + HALF_PI);
+	arc(270, 145, 105, 200, PI, PI + HALF_PI);
+	arc(265, 151, 110, 210, PI, PI + HALF_PI);
+	arc(260, 157, 115, 220, PI, PI + HALF_PI);
 
 	arc(320, 85, 55, 100, PI + HALF_PI, TWO_PI);
 	arc(325, 91, 60, 110, PI + HALF_PI, TWO_PI);
