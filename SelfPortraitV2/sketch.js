@@ -31,8 +31,8 @@ function setup() {
 function draw() {
 	background ('white');
 
-	//WholeheadX = mouseX
-	//WholeheadY = mouseY
+	WholeheadX = mouseX
+	WholeheadY = mouseY
 
 	//Wholehead
 	//head
