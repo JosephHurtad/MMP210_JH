@@ -81,8 +81,8 @@ function setup() {
 function draw() {
 	background ('white');
 
-	//wholeHeadX = mouseX
-	//wholeHeadY = mouseY
+	wholeHeadX = mouseX;
+	wholeHeadY = mouseY;
 
 	//Wholehead
 	//head
@@ -138,5 +138,5 @@ function draw() {
 	noFill();
 	stroke(255, 0, 0);
 	strokeWeight(3);
-	//point(wholeHeadX, wholeHeadY)
+	point(wholeHeadX, wholeHeadY)
 }
