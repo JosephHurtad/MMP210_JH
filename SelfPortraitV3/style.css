@@ -14,6 +14,10 @@ li {
 	list-style: none;
 }
 
+h2 {
+	Color: white;
+}
+
 a {
 	color: #4278FF;
 	transition: color 200ms ease-in;
