@@ -104,7 +104,7 @@ function draw() {
 	background ('white');
 
 	wholeHeadX = 320;
-	wholeHeadY = 190;
+	wholeHeadY = 180;
 	//wholeHeadX = mouseX;
 	//wholeHeadY = mouseY;
 
@@ -174,35 +174,35 @@ function draw() {
 	headWidth = 210 * p;
 	headHeight = headWidth + (100 * p);
 
-	eyesApart = 60 * p;
+	eyesApart =      60 * p;
 	eyesFromCenter = 30 * p;
 
-	eyesStrokeWeight = 2 * p;
-	eyesWidth = 90 * p;
-	eyesHeight = 40 * p;
+	eyesStrokeWeight = 2  * p;
+	eyesWidth =        90 * p;
+	eyesHeight =       40 * p;
 
-	eyeLineApart = 15 * p;
+	eyeLineApart =      15 * p;
 	eyeLineFromCenter = 30 * p;
 
-	mouthStrokeWeight = 6 * p;
-	mouthWidth = 50 * p;
-	mouthHeight1 = 60 * p;
-	mouthHeight2 = 80 * p;
+	mouthStrokeWeight = 6  * p;
+	mouthWidth =        50 * p;
+	mouthHeight1 =      60 * p;
+	mouthHeight2 =      80 * p;
 
-	hairStrokeWeight = 3 * p;
-	arcWidth1 =  55 * p;
-	arcWidth2 =  60 * p;
-	arcWidth3 =  65 * p;
-	arcWidth4 =  70 * p;
-	arcWidth5 =  75 * p;
-	arcWidth6 =  80 * p;
-	arcWidth7 =  85 * p;
-	arcWidth8 =  90 * p;
-	arcWidth9 =  95 * p;
-	arcWidth10 = 100 * p;
-	arcWidth11 = 105 * p;
-	arcWidth12 = 110 * p;
-	arcWidth13 = 115 * p;
+	hairStrokeWeight = 3  * p;
+	arcWidth1 =        55  * p;
+	arcWidth2 =        60  * p;
+	arcWidth3 =        65  * p;
+	arcWidth4 =        70  * p;
+	arcWidth5 =        75  * p;
+	arcWidth6 =        80  * p;
+	arcWidth7 =        85  * p;
+	arcWidth8 =        90  * p;
+	arcWidth9 =        95  * p;
+	arcWidth10 =       100 * p;
+	arcWidth11 =       105 * p;
+	arcWidth12 =       110 * p;
+	arcWidth13 =       115 * p;
 
 	arcHeight1 =  100 * p;
 	arcHeight2 =  110 * p;
@@ -219,32 +219,32 @@ function draw() {
 	arcHeight13 = 220 * p;
 
 	arcW1 =  0.01 * p;
-	arcW2 =  5 * p;
-	arcW3 =  10 * p;
-	arcW4 =  15 * p;
-	arcW5 =  20 * p;
-	arcW6 =  25 * p;
-	arcW7 =  30 * p;
-	arcW8 =  35 * p;
-	arcW9 =  40 * p;
-	arcW10 = 45 * p;
-	arcW11 = 50 * p;
-	arcW12 = 55 * p;
-	arcW13 = 60 * p;
+	arcW2 =  5    * p;
+	arcW3 =  10   * p;
+	arcW4 =  15   * p;
+	arcW5 =  20   * p;
+	arcW6 =  25   * p;
+	arcW7 =  30   * p;
+	arcW8 =  35   * p;
+	arcW9 =  40   * p;
+	arcW10 = 45   * p;
+	arcW11 = 50   * p;
+	arcW12 = 55   * p;
+	arcW13 = 60   * p;
 
 	arcH1 =  105 * p;
-	arcH2 =  99 * p;
-	arcH3 =  93 * p;
-	arcH4 =  87 * p;
-	arcH5 =  81 * p;
-	arcH6 =  75 * p;
-	arcH7 =  69 * p;
-	arcH8 =  63 * p;
-	arcH9 =  57 * p;
-	arcH10 = 51 * p;
-	arcH11 = 45 * p;
-	arcH12 = 39 * p;
-	arcH13 = 33 * p;
+	arcH2 =  99  * p;
+	arcH3 =  93  * p;
+	arcH4 =  87  * p;
+	arcH5 =  81  * p;
+	arcH6 =  75  * p;
+	arcH7 =  69  * p;
+	arcH8 =  63  * p;
+	arcH9 =  57  * p;
+	arcH10 = 51  * p;
+	arcH11 = 45  * p;
+	arcH12 = 39  * p;
+	arcH13 = 33  * p;
 
 }
 
