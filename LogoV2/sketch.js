@@ -13,9 +13,12 @@ function preload() {
 }
 
 var bottomText = 'GRAPE';
-var Gscale = 1.25;
-//var textStart = 200;
-//var textEnd = 340;
+var shadeStart = 0;
+var shadeEnd = 200;
+var textStart = 280;
+var textEnd = 420;
+var scaleStart = 200;
+var scaleEnd = 270;
 
 function setup() {
 	createCanvas(640, 360); // (width, height)
@@ -24,11 +27,12 @@ function setup() {
 
 function draw() {
 
-//	var len = bottomText.length;
-//	var backShade = map(frameCount, 0, textStart, 0, 255);
-//	var letters = map(frameCount, textStart, textEnd, 0, len);
-	
-	background(255);
+	var len = bottomText.length;
+	var backShade = map(frameCount, shadeStart, shadeEnd, 0, 255, true);
+	var letters = map(frameCount, textStart, textEnd, 0, len, true);
+	var gScale = map(frameCount, scaleStart, scaleEnd, 0.001, 1.25, true);
+
+	background(backShade);
 
 	centerX = 320;
 	centerY = 180;
@@ -40,12 +44,12 @@ function draw() {
 	fill(0);
 	stroke(0);
 	strokeWeight(3);
-	textFont('Pixel'); //get pixaleted Font ...DOES NOT WORK
+	textFont('Pixel');
 	textAlign(CENTER, CENTER);
-	text(bottomText, centerX, centerY + 100);
+	text(bottomText.substring(0, letters), centerX, centerY + 100);
 
 	//image
-	image(grapeImage, centerX, centerY - 50, 136 * Gscale, 162 * Gscale); //u can change size by adding 2 more variables
+	image(grapeImage, centerX, centerY - 50, 136 * gScale, 162 * gScale);
 
 	//nothing
 	noFill();
