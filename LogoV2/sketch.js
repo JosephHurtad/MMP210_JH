@@ -15,10 +15,11 @@ function preload() {
 var bottomText = 'GRAPE';
 var shadeStart = 0;
 var shadeEnd = 200;
-var textStart = 280;
-var textEnd = 420;
 var scaleStart = 200;
 var scaleEnd = 270;
+var textStart = 280;
+var textEnd = 420;
+var Int1Start = 430;
 
 function setup() {
 	createCanvas(640, 360); // (width, height)
@@ -27,19 +28,49 @@ function setup() {
 
 function draw() {
 
-	var len = bottomText.length;
-	var backShade = map(frameCount, shadeStart, shadeEnd, 0, 255, true);
-	var letters = map(frameCount, textStart, textEnd, 0, len, true);
-	var gScale = map(frameCount, scaleStart, scaleEnd, 0.001, 1.25, true);
-
-	background(backShade);
-
 	centerX = 320;
 	centerY = 180;
 	//centerX = mouseX;
 	//centerY = mouseY;
 
-	//text
+	//Interactivity
+	if (frameCount >= Int1Start) {
+		if (mouseIsPressed) {
+			gScale = map(mouseX, 0, width, 0.001, 2, true);
+			backShade = map(mouseY, 0, height, 0, 255, true);
+			lineX = mouseX;
+			lineY = mouseY;
+			cTextX = mouseX;
+			cTextY = mouseY;
+			centerDX = mouseX;
+			centerDY = mouseY;
+		} else {
+			backShade = 255;
+			gScale = 1.25;
+			lineX = -100;
+			lineY = -100;
+			cTextX = -100;
+			cTextY = -100;
+			centerDX = -100;
+			centerDY = -100;
+		}
+
+	} else {
+		len = bottomText.length;
+		backShade = map(frameCount, shadeStart, shadeEnd, 0, 255, true);
+		letters = map(frameCount, textStart, textEnd, 0, len, true);
+		gScale = map(frameCount, scaleStart, scaleEnd, 0.001, 1.25, true);
+		lineX = -100;
+		lineY = -100;
+		cTextX = -100;
+		cTextY = -100;
+		centerDX = -100;
+		centerDY = -100;
+	}
+
+	background(backShade);
+
+	//bottom text
 	textSize(80);
 	fill(0);
 	stroke(0);
@@ -51,16 +82,36 @@ function draw() {
 	//image
 	image(grapeImage, centerX, centerY - 50, 136 * gScale, 162 * gScale);
 
-	//nothing
+	//lines
 	noFill();
-	stroke(0, 0, 0);
+	stroke(255, 0, 0);
 	strokeWeight(3);
-	line();
+	line(0, lineY, width, lineY); // Y
+	line(lineX, 0, lineX, height); // X
+
+	//data interactivity
+	if (mouseX > width / 2) {
+		text1X = RIGHT;
+	} else {
+		text1X = LEFT;
+	}
+
+	if (mouseY > height / 2) {
+		text1Y = BOTTOM;
+	} else {
+		text1Y = TOP;
+	}
+
+	//data text
+	fill(255, 0, 0);
+	strokeWeight(0);
+	textSize(29);
+	textAlign(text1X, text1Y);
+	text(" Color(" + round(backShade) + "), Size * " + round(gScale) + " ", cTextX, cTextY);
 
 	//Center Dot
 	noFill();
 	stroke(255, 0, 0);
 	strokeWeight(3);
-	//point(centerX, centerY)
-
+	point(centerDX, centerDY);
 }
