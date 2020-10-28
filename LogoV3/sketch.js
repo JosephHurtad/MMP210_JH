@@ -1,4 +1,4 @@
- /* Meme v1 by Joseph Hurtado */
+ /* Logo v3 by Joseph Hurtado */
 	/* use comments to reparate shapes
 	circle(0, 0, 100);
 	square(0, 0, 100);
@@ -7,7 +7,6 @@
 	line(0, 0, 100, 100);
 	triangle(0, 0, 100, 100, 50, 50);
 	*/
-
 function preload() {
 	grapeImage = loadImage('../Images/Grape.png');
 }
@@ -20,6 +19,7 @@ var scaleEnd = 270;
 var textStart = 280;
 var textEnd = 420;
 var Int1Start = 500;
+var rng;
 
 var speedX = 2;
 var speedY = 3;
@@ -30,7 +30,7 @@ var centerY = 180;
 function setup() {
 	createCanvas(640, 360); // (width, height)
 	imageMode(CENTER);
-	var rng = round(random(1,4));//ask prof!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	rng = round(random(1,4));
 }
 
 function draw() {
@@ -41,17 +41,14 @@ function draw() {
 	centerDX = centerX;
 	centerDY = centerY;
 
-	//print(rng)
+	print(rng)
 
 	//Interactivity
 	if (frameCount >= Int1Start) {
 		
 		gScale = 0.75;
 
-		centerX += speedX;
-		centerY += speedY;
-
-		/*if (rng == 1) {
+		if (rng == 1) {
 
 			centerX += speedX;
 			centerY += speedY;
@@ -73,7 +70,7 @@ function draw() {
 
 		} else {
 			print("error, rng =! 1-4")
-		}*/
+		}
 
 		if (centerX > width - 70 || centerX < 0 + 75) {
 			speedX *= -1;

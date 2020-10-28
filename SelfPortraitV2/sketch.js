@@ -1,4 +1,4 @@
- /* Self Portrait v1 by Joseph Hurtado */
+ /* Self Portrait v2 by Joseph Hurtado */
 	/* use comments to reparate shapes
 	circle(0, 0, 100);
 	square(0, 0, 100);
