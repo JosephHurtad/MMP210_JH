@@ -33,6 +33,7 @@ function preload() {
 	sound7 = loadSound('Sounds/Blip_select21.wav');
 	sound8 = loadSound('Sounds/Blip_select25.wav');
 	sound9 = loadSound('Sounds/Blip_select28.wav');
+	rng = round(random(1,9));
 }
 
 var centerX = 320;
@@ -76,7 +77,6 @@ function mousePressed() {
 	CG = random(0, 255);
 	CB = random(0 ,255);
 
-	rng = round(random(1,9));
 	if (rng == 1) {
 		sound1.play();
 	} else if (rng == 2) {
@@ -98,4 +98,8 @@ function mousePressed() {
 	}
 }
 
-
+function keyPressed () {
+	if (keyCode == 32) {
+		rng = round(random(1,9));
+	}
+}
