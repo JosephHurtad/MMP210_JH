@@ -6,7 +6,37 @@
 	ellipse(0, 0, 100, 50);
 	line(0, 0, 100, 100);
 	triangle(0, 0, 100, 100, 50, 50);
+
+	//gif stuff 0.5
+
+function mousePressed () {
+  saveCanvas(mycanvas,"screenshot","png");
+}
+
+	//gif stuff
+
+	mycanvas = createCanvas(640, 360); // (width, height)
+
+	var iteration = 0;
+
+	if (frameCount > 200 && frameCount < 800) {
+	formatted_number = FormatNumberLength(iteration,4);
+	saveCanvas(mycanvas,"screenshot"+formatted_number,"png");
+
+	iteration += 1;
+	}
+	print(frameCount);
+}
+
+function FormatNumberLength(num, length) {
+    var r = "" + num;
+    while (r.length < length) {
+        r = "0" + r;
+    }
+    return r;
+}
 	*/
+
 function preload() {
 	grapeImage = loadImage('../Images/Grape.png');
 }
@@ -27,8 +57,10 @@ var speedY = 3;
 var centerX = 320;
 var centerY = 180;
 
+var iteration = 0;
+
 function setup() {
-	createCanvas(640, 360); // (width, height)
+	mycanvas = createCanvas(640, 360); // (width, height)
 	imageMode(CENTER);
 	rng = round(random(1,4));
 }
@@ -41,7 +73,7 @@ function draw() {
 	centerDX = centerX;
 	centerDY = centerY;
 
-	print(rng)
+	//print(rng)
 
 	//Interactivity
 	if (frameCount >= Int1Start) {

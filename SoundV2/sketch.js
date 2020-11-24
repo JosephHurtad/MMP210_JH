@@ -33,7 +33,7 @@ var centerX = 320;
 var centerY = 180;
 
 function setup() {
-	createCanvas(640, 360); // (width, height)
+	mycanvas = createCanvas(640, 360); // (width, height)
 }
 
 function draw() {

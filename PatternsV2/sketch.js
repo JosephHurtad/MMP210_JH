@@ -1,4 +1,4 @@
- /* Sound v2 by Joseph Hurtado */
+ /* Patterns v2 by Joseph Hurtado */
 	/* use comments to reparate shapes
 	circle(0, 0, 100);
 	square(0, 0, 100);
@@ -6,7 +6,7 @@
 	ellipse(0, 0, 100, 50);
 	line(0, 0, 100, 100);
 	triangle(0, 0, 100, 100, 50, 50);
-		
+	
 	//gif stuff 0.5
 	
 function mousePressed () {
@@ -56,7 +56,7 @@ var k7 = k6 + i;
 var k8 = k7 + i;
 var k9 = k8 + i;
 
-var p, u;
+var p, w;
 var q1 = 0;
 var q2 = 0;
 var q3 = 0;
@@ -92,6 +92,7 @@ function setup() {
 	q5 = p * 4 + r5;
 	q6 = p * 5 + r6;
 	q7 = p * 6 + r7;
+	w = 40;
 }
 
 function draw() {
@@ -158,42 +159,23 @@ function draw() {
 
 	
 
-	//Road
+	//Side walk
 	fill(74, 72, 68);
 	strokeWeight(0);
 	rect(0, height - 50, width, 50);
 	rect(0, height - 200, width, 50);
 
-	//Road Center
+	//Road center
 
 	fill(20, 20, 19);
 	strokeWeight(0);
 	rect(0, height - 150, width, 100);
 
-	//Road Detail
-	strokeWeight(3);
-	stroke(48, 47, 45);
-	noFill();
+	//Side walk detail
+	sideWalk(w, 10, 50);
+	sideWalk(w, 150, 200);
 	
-	for(let x = 40; x <= width; x += 40) {
-
-		line(x, height - 200, x, height - 150);
-		line(x, height, x, height - 50);
-
-	}
-
-	for(let y = 10; y <= 50; y += 10) {
-
-		line(0, height - y, width, height - y);
-		
-	}
-
-	for(let y = 150; y <= 200; y += 10) {
-
-		line(0, height - y, width, height - y);
-
-	}
-
+	w -= s;
 
 	//Road Lines
 	noFill();
@@ -299,22 +281,71 @@ function air(x, y, l, c, s) {
 }
 
 function build(x, y, w, h) {
-	fill(132, 76, 59);
-	strokeWeight(4);
+	fill('gray');
+	strokeWeight(10);
 	stroke(128, 70, 55);
 	rect(x, y, w, h);
+	//Bricks
+	for (let i = x - 5.5; i < x + w; i += 11) {
+		for (let o = y; o > y + h; o -= 11) {
+			fill(132, 76, 59);
+			strokeWeight(0);
+			rect(i, o, 10, 5);
+		}
+	}
+	for (let i = x; i < x + w - 5.5; i += 11) {
+		for (let o = y + 5.5; o > y + h; o -= 11) {
+			fill(132, 76, 59);
+			strokeWeight(0);
+			rect(i, o, 10, 5);
+		}
+	}
+	//Windows
 	if (h < -100) {
 		fill('white');
-		strokeWeight(0);
-		rect(x + (w / 5), y + h / 5, w / 5, h / 5);
-		rect(x + (w / 5) * 3, y + h / 5, w / 5, h / 5);
-		rect(x + (w / 5), y + (h / 5) * 3, w / 5, h / 5);
+		strokeWeight(1);
+		stroke('black');
+		rect(x + (w / 5) * 1, y + (h / 5) * 1, w / 5, h / 5);
+		rect(x + (w / 5) * 3, y + (h / 5) * 1, w / 5, h / 5);
+		rect(x + (w / 5) * 1, y + (h / 5) * 3, w / 5, h / 5);
 		rect(x + (w / 5) * 3, y + (h / 5) * 3, w / 5, h / 5);
+		noFill();
+		strokeWeight(2);
+		stroke('black');
+		line(x + (w / 10) * 2, y + (h / 10) * 3, x + (w / 10) * 4, y + (h / 10) * 3);
+		line(x + (w / 10) * 3, y + (h / 10) * 2, x + (w / 10) * 3, y + (h / 10) * 4);
+		line(x + (w / 10) * 6, y + (h / 10) * 3, x + (w / 10) * 8, y + (h / 10) * 3);
+		line(x + (w / 10) * 7, y + (h / 10) * 2, x + (w / 10) * 7, y + (h / 10) * 4);
+		line(x + (w / 10) * 2, y + (h / 10) * 7, x + (w / 10) * 4, y + (h / 10) * 7);
+		line(x + (w / 10) * 3, y + (h / 10) * 6, x + (w / 10) * 3, y + (h / 10) * 8);
+		line(x + (w / 10) * 6, y + (h / 10) * 7, x + (w / 10) * 8, y + (h / 10) * 7);
+		line(x + (w / 10) * 7, y + (h / 10) * 6, x + (w / 10) * 7, y + (h / 10) * 8);
 	} else if (h > -100) {
 		fill('white');
-		strokeWeight(0);
-		rect(x + (w / 5), y + h / 3, w / 5, h / 3);
+		strokeWeight(1);
+		stroke('black');
+		rect(x + (w / 5) * 1, y + h / 3, w / 5, h / 3);
 		rect(x + (w / 5) * 3, y + h / 3, w / 5, h / 3);
+		noFill();
+		strokeWeight(2);
+		stroke('black');
+		line(x + (w / 10) * 2, y + (h / 6) * 3, x + (w / 10) * 4, y + (h / 6) * 3);
+		line(x + (w / 10) * 3, y + (h / 6) * 4, x + (w / 10) * 3, y + (h / 6) * 2);
+		line(x + (w / 10) * 6, y + (h / 6) * 3, x + (w / 10) * 8, y + (h / 6) * 3);
+		line(x + (w / 10) * 7, y + (h / 6) * 4, x + (w / 10) * 7, y + (h / 6) * 2);
 	}
 
+}
+
+function sideWalk(x, y, y2) {
+	strokeWeight(3);
+	stroke(48, 47, 45);
+	noFill();
+	for(let i = x; i <= width; i += 40) {
+		for (let o = y; o <= y2; o += 10) {
+			line(i, height - 200, i, height - 150);
+			line(i, height, i, height - 50);
+			line(0, height - o, width, height - o);
+		}
+	}
 }

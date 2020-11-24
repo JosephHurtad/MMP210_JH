@@ -6,6 +6,29 @@
 	ellipse(0, 0, 100, 50);
 	line(0, 0, 100, 100);
 	triangle(0, 0, 100, 100, 50, 50);
+
+	//gif stuff
+
+	mycanvas = createCanvas(640, 360); // (width, height)
+
+	var iteration = 0;
+
+	if (frameCount > 200 && frameCount < 800) {
+	formatted_number = FormatNumberLength(iteration-90,4);
+	saveCanvas(mycanvas,"screenshot"+formatted_number,"png");
+
+	iteration += 1;
+	}
+	print(frameCount);
+}
+
+function FormatNumberLength(num, length) {
+    var r = "" + num;
+    while (r.length < length) {
+        r = "0" + r;
+    }
+    return r;
+}
 	*/
 
 function preload() {
@@ -18,7 +41,7 @@ var Gscale = 1.25;
 //var textEnd = 340;
 
 function setup() {
-	createCanvas(640, 360); // (width, height)
+	mycanvas = createCanvas(640, 360); // (width, height)
 	imageMode(CENTER);
 }
 

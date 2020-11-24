@@ -6,6 +6,35 @@
 	ellipse(0, 0, 100, 50);
 	line(0, 0, 100, 100);
 	triangle(0, 0, 100, 100, 50, 50);
+
+	//gif stuff 0.5
+	
+function mousePressed () {
+  saveCanvas(mycanvas,"screenshot","png");
+}
+
+	//gif stuff
+
+	mycanvas = createCanvas(640, 360); // (width, height)
+
+	var iteration = 0;
+
+	if (frameCount > 200 && frameCount < 800) {
+	formatted_number = FormatNumberLength(iteration-90,4);
+	saveCanvas(mycanvas,"screenshot"+formatted_number,"png");
+
+	iteration += 1;
+	}
+	print(frameCount);
+}
+
+function FormatNumberLength(num, length) {
+    var r = "" + num;
+    while (r.length < length) {
+        r = "0" + r;
+    }
+    return r;
+}
 	*/
 
 var headR = 198;
@@ -97,7 +126,7 @@ var arcH12 = 39;
 var arcH13 = 33;
 
 function setup() {
-	createCanvas(640, 360); // (width, height)
+	mycanvas = createCanvas(640, 360); // (width, height)
 }
 
 function draw() {
@@ -245,8 +274,4 @@ function draw() {
 	arcH11 = 45  * p;
 	arcH12 = 39  * p;
 	arcH13 = 33  * p;
-
 }
-
-
-	
