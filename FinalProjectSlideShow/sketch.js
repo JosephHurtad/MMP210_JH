@@ -35,7 +35,7 @@ function FormatNumberLength(num, length) {
     }
     return r;
 }
-	*/
+	*/ 
 
 function preload() {
 	patternsImage = loadImage('../Images/Building.png');
