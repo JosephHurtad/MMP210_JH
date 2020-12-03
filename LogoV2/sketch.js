@@ -59,8 +59,8 @@ function setup() {
 
 function draw() {
 
-	centerX = 320;
-	centerY = 180;
+	centerX = width / 2;
+	centerY = height / 2;
 	//centerX = mouseX;
 	//centerY = mouseY;
 

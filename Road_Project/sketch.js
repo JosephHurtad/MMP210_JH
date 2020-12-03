@@ -39,20 +39,31 @@ function FormatNumberLength(num, length) {
 
 function preload() {
 	cloudImage = loadImage('../Images/Cloud.png');
+	starImage = loadImage('../Images/Star.png');
+	moonImage = loadImage('../Images/Moon.png');
 	grassImage = loadImage('../Images/Grass.png');
+	grapeImage = loadImage('../Images/Grape.png');
+	backgroundMusic = loadSound('Sounds/Flower Fields - Kirbys Epic Yarn.wav');
 }
 
-var centerX = 320;
-var centerY = 180;
+var bottomText = 'GRAPE';
+
+var shadeStart = 0;
+var shadeEnd = 200;
+var scaleStart = 200;
+var scaleEnd = 270;
+var textStart = 280;
+var textEnd = 420;
+var Int1Start = 520;
 
 var i = 70;
-var s = 0;
-var k = 10;//add sound and more as a final project, also do gifs as thumnails, at beguinning ask for a canvas size, start with logo intro
-var w = 40;//finish clouds
+var s1;
+var s2;
+var sf = 50;
+var orbitSpeed;
+var k = 10;//Fix Sound Error
+var w = 40;
 var g = 10;
-
-var s1 = 0;
-var s2 = 30;
 
 var ps;
 var pe;
@@ -73,9 +84,16 @@ var b = 0;
 
 var cityWidth;
 
+var frameThing
+
+var horizon = 0.5;
+
 function setup() {
 	//createCanvas(640, 360); // (width, height)
 	createCanvas(1583, 630);
+
+	centerX = width / 2;
+	centerY = height / 2;
 
 	ns = width / 7;
 	ne = width / 6;
@@ -160,23 +178,94 @@ function setup() {
 	g12 = n12 * 12;
 	g13 = n13 * 13;
 	g14 = n14 * 14;
-}
+
+	orbitCenterX = width / 2;
+	orbitCenterY = height * 0.75;
+	orbitRadius = width * 0.5;
+	sAngle = 0;
+	mAngle = PI;
+	}
 
 function draw() {
+	
+	if (frameThing >= Int1Start) {
+		road();
+	} else {
+		logo();
+		frameThing = frameCount
+	}
+}
 
-	background('lightblue');
+function logo() {
+	len = bottomText.length;
+	backShade = map(frameCount, shadeStart, shadeEnd, 0, 255, true);
+	letters = map(frameCount, textStart, textEnd, 0, len, true);
+	gScale = map(frameCount, scaleStart, scaleEnd, 0.001, 1.25, true);
+	
+	background(backShade);
+
+	//bottom text
+	textSize(80);
+	fill(0);
+	stroke(0);
+	strokeWeight(3);
+	textFont('Pixel');
+	textAlign(CENTER, CENTER);
+	text(bottomText.substring(0, letters), centerX, centerY + 100);
+
+	//skip text
+	textSize(40);
+	fill(0);
+	stroke(0);
+	strokeWeight(2);
+	textFont('Pixel');
+	textAlign(LEFT, TOP);
+	text(' Click anywhere to SKIP', 0, 0);
+
+	//image
+	imageMode(CENTER);
+	image(grapeImage, centerX, centerY - 50, 136 * gScale, 162 * gScale);
+	imageMode(CORNER);
+}
+
+function road() {
+
+	//if (!backgroundMusic.isPlaying()) {
+	//	backgroundMusic.play();
+	//}
+
+	background(173 * horizon, 216 * horizon, 230 * horizon);
 
 	//centerX = mouseX;
 	//centerY = mouseY;
 
-	s = map(mouseX, width / 6, 5 * (width / 6), s1, s2, true);
+	s1 = map(mouseX, width / 6, 5 * (width / 6), 0, sf, true);
+	s2 = map(mouseX, width / 6, 5 * (width / 6), 0, 35, true);
+	orbitSpeed = map(mouseX, width / 6, 5 * (width / 6), 0, 0.05, true);
 
-	//Sun
+	//Sun / Moon
+	var sX = orbitCenterX + orbitRadius * cos(sAngle);
+	var sY = orbitCenterY + orbitRadius * sin(sAngle);
+	var mX = orbitCenterX + orbitRadius * cos(mAngle);
+	var mY = orbitCenterY + orbitRadius * sin(mAngle);
+
 	strokeWeight(0);
 	fill(245, 250, 110);
-	ellipse(width, 0, height * 0.3);
+	ellipse(sX, sY, height * 0.3);
+	image(moonImage, mX, mY, height * 0.15, height * 0.15);
 
-	//Clouds
+	sAngle -= orbitSpeed;
+	mAngle -= orbitSpeed;
+
+	//Background color
+	horizon = map(sY, orbitCenterY + orbitRadius - 200, orbitCenterY - orbitRadius + 200, 0.1, 1, true);
+
+	//Clouds / Stars
+	alpha1 = map(sY, orbitCenterY + orbitRadius - 200, orbitCenterY - orbitRadius + 200, 0, 255, true);
+	alpha2 = map(sY, orbitCenterY + orbitRadius - 200, orbitCenterY - orbitRadius + 200, 255, 0, true);
+
+	tint(255, alpha1);
+
 	cloud(g1, f1);
 	cloud(g2, f2);
 	cloud(g3, f3);
@@ -191,20 +280,40 @@ function draw() {
 	cloud(g12, f12);
 	cloud(g13, f13);
 	cloud(g14, f14);
-	g1 -= s;
-	g2 -= s;
-	g3 -= s;
-	g4 -= s;
-	g5 -= s;
-	g6 -= s;
-	g7 -= s;
-	g8 -= s;
-	g9 -= s;
-	g10 -= s;
-	g11 -= s;
-	g12 -= s;
-	g13 -= s;
-	g14 -= s;
+
+	tint(255, alpha2);
+
+	star(g1, f1);
+	star(g2, f2);
+	star(g3, f3);
+	star(g4, f4);
+	star(g5, f5);
+	star(g6, f6);
+	star(g7, f7);
+	star(g8, f8);
+	star(g9, f9);
+	star(g10, f10);
+	star(g11, f11);
+	star(g12, f12);
+	star(g13, f13);
+	star(g14, f14);
+
+	tint(255,255);
+
+	g1 -= s2;
+	g2 -= s2;
+	g3 -= s2;
+	g4 -= s2;
+	g5 -= s2;
+	g6 -= s2;
+	g7 -= s2;
+	g8 -= s2;
+	g9 -= s2;
+	g10 -= s2;
+	g11 -= s2;
+	g12 -= s2;
+	g13 -= s2;
+	g14 -= s2;
 
 	if (g1 < -50) {
 		n1 = random(ns, ne) + g14;
@@ -284,14 +393,14 @@ function draw() {
 	rect(0, height - 205, width, 20);
 
 	//Grass
-	grass(b, height - 240, 100, 35);
+	grass(b, height - 235, 100, 30);
 
-	b -= s;
+	b -= s1;
 
 	//Cities
 	city(q, height - 185);
 
-	q -= s;
+	q -= s1;
 
 	if (q < (25 + cityWidth) * -1) {
 		u1 = random(us, ue);
@@ -340,30 +449,30 @@ function draw() {
 	sideWalk(w, 10, 50);
 	sideWalk(w, 150, 190);
 	
-	w -= s;
+	w -= s1;
 
 	//Road Lines
 	roadLine(k, 100, 20)
 
-	k -= s;
+	k -= s1;
 	
 	//Air
-	if (s > s2 * 0.5) {
+	if (s1 > sf * 0.5) {
 		air(random(0, width), random(height - 50, height - 350), random(20, 25), 'white', 3);
 	}
-	if (s > s2 * 0.65) {
+	if (s1 > sf * 0.65) {
 		air(random(0, width), random(height - 50, height - 350), random(20, 25), 'white', 3);
 	}
-	if (s > s2 * 0.75) {
+	if (s1 > sf * 0.75) {
 		air(random(0, width), random(height - 50, height - 350), random(20, 25), 'white', 3);
 	}
-	if (s > s2 * 0.90) {
+	if (s1 > sf * 0.90) {
 		air(random(0, width), random(height - 50, height - 350), random(20, 25), 'white', 3);
 	}
-	if (s > s2 * 0.95) {
+	if (s1 > sf * 0.95) {
 		air(random(0, width), random(height - 50, height - 350), random(20, 25), 'white', 3);
 	}
-	if (s > s2 * 0.99) {
+	if (s1 > sf * 0.99) {
 		air(random(0, width), random(height - 50, height - 350), random(20, 25), 'white', 3);
 	}
 
@@ -490,9 +599,11 @@ function roadLine(x, y, w) {
 }
 
 function cloud(x, y) {
-	strokeWeight(0);
-	fill('white');
 	image(cloudImage, x - 50, y - 25, 100, 50);
+}
+
+function star(x, y) {
+	image(starImage, x - 20, y - 15, 40, 30);
 }
 
 function city(x, y) {
@@ -514,4 +625,8 @@ function grass(x, y, w, h) {
 	for (let i = x; i <= width; i += w) {
 		image(grassImage, i, y, w, h);
 	}
+}
+
+function mousePressed() {
+	frameThing = Int1Start 
 }
